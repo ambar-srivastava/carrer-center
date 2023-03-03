@@ -1,25 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./App.css";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Navbar from "./components/Navbar";
+import LandingPage from "./pages/LandingPage";
+import Footer from "./components/Footer";
+import WebCourse from "./pages/WebCourse";
+import WebDesiging from "./pages/WebDesiging";
+import Dashboard from "./components/Dashboard";
+import MyProfile from "./components/MyProfile";
+import EditProfile from "./components/EditProfile";
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<LandingPage />} />
+        <Route path="/webdev" element={<WebCourse />} />
+        <Route path="/webdesign" element={<WebDesiging />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/myprofile" element={<MyProfile />} />
+        <Route path="/editprofile" element={<EditProfile />} />
+      </Routes>
+
+      <Footer />
+    </BrowserRouter>
   );
-}
+};
 
 export default App;
